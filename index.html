@@ -92,12 +92,6 @@
             50% { transform: translateY(-8px); }
         }
         
-        .pulse { animation: pulse 2s ease-in-out infinite; }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-        }
-        
         .glow-bg {
             position: fixed;
             width: 300px; height: 300px;
@@ -136,6 +130,7 @@
             align-items: center;
             gap: 12px;
             text-decoration: none;
+            cursor: pointer;
         }
         .download-btn:hover {
             transform: scale(1.03) translateY(-3px);
@@ -216,7 +211,8 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 mt-6 pb-12">
-        <!-- Hero / تحميل -->
+        
+        <!-- Hero Section -->
         <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-purple-900/60 to-purple-800/30 border border-purple-500/20 text-white p-6 md:p-8 mb-8 shadow-2xl backdrop-blur-md text-center">
             <div class="absolute inset-0 bg-black/10"></div>
             <div class="relative z-10">
@@ -229,13 +225,19 @@
                 <h2 class="text-3xl md:text-4xl font-bold header-title text-purple-100 mb-2">جمعتهالك</h2>
                 <p class="text-lg text-purple-200/90 mb-1">مش بالجهد... بالذكاء</p>
                 <p class="text-sm text-purple-300/70 mb-5">تطبيق تعليمي شامل للأزهر والعام – شرح، اختبارات، مذكرات، مجتمع، وذكاء اصطناعي</p>
-                
-                <!-- رابط التحميل المباشر -->
-                <a href="https://apk.e-droid.net/apk/app3550824-ugi165.apk?v=4" class="download-btn" target="_blank">
-                    <i class="fas fa-cloud-download-alt"></i> تحميل التطبيق الآن
-                </a>
-                <p class="text-xs text-purple-300/50 mt-3">إصدار Android • حجم صغير • تحديثات مستمرة</p>
             </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="text-center p-6 mb-8 rounded-2xl bg-gradient-to-br from-purple-900/30 to-fuchsia-900/20 border border-purple-500/30 shadow-lg">
+            <h3 class="text-2xl font-bold header-title text-white mb-2">
+                <i class="fas fa-download text-purple-400 ml-2"></i> حمل التطبيق الآن
+            </h3>
+            <p class="text-gray-300 mb-4">اضغط على الزر لتحميل تطبيق جمعتهالك على هاتفك الأندرويد</p>
+            <a href="https://apk.e-droid.net/apk/app3550824-ugi165.apk?v=4" class="download-btn" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-cloud-download-alt"></i> تحميل التطبيق مباشرة
+            </a>
+            <p class="text-xs text-purple-300/50 mt-3">إصدار Android • حجم صغير • تحديثات مستمرة</p>
         </div>
 
         <!-- مميزات التطبيق -->
@@ -288,20 +290,20 @@
             </div>
         </div>
 
-        <!-- قسم التليجرام - التواصل مع المطور -->
+        <!-- Telegram Support Section -->
         <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
             <div class="flex items-center gap-3">
                 <i class="fab fa-telegram-plane text-2xl text-purple-400"></i>
                 <span class="text-gray-300">تواصل مع المطور:</span>
             </div>
             <div>
-                <a href="https://t.me/karem0101" target="_blank" class="telegram-btn">
+                <a href="https://t.me/karem0101" target="_blank" rel="noopener noreferrer" class="telegram-btn">
                     <i class="fab fa-telegram-plane"></i> Karem ALabadly
                 </a>
             </div>
         </div>
 
-        <!-- فوتر صغير -->
+        <!-- Footer -->
         <div class="mt-8 text-center text-gray-500 text-xs border-t border-white/5 pt-6">
             <p>جمعتهالك 2026 – تطبيق تعليمي للصف الثالث الإعدادي (أزهر وعام). جميع الحقوق محفوظة.</p>
         </div>
