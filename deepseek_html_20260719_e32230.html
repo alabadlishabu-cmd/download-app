@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>تحميل جمعتهالك - تطبيق تعليمي للثالث الإعدادي</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --primary: #7e22ce;
+            --primary-light: #a855f7;
+            --secondary: #f59e0b;
+            --accent: #ec4899;
+            --text: #1f2937;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            color: #e5e7eb;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #090514 0%, #110c24 50%, #090514 100%);
+        }
+        
+        .header-title { font-family: 'El Messiri', sans-serif; font-weight: 700; }
+        
+        .header-normal {
+            background: linear-gradient(135deg, rgba(126, 34, 206, 0.4) 0%, rgba(168, 85, 247, 0.2) 100%);
+            backdrop-filter: blur(15px);
+            border-bottom-left-radius: 25px;
+            border-bottom-right-radius: 25px;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-mixed {
+            border-radius: 24px;
+            background: rgba(17, 12, 28, 0.45);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1.5px solid rgba(126, 34, 206, 0.25);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0 15px 35px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            padding: 1.75rem 1.25rem;
+        }
+        
+        .card-mixed::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 24px;
+            padding: 1.5px;
+            background: linear-gradient(135deg, #000000 0%, #3b0764 40%, #7e22ce 100%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            opacity: 0.8;
+        }
+        
+        .card-mixed:hover {
+            transform: translateY(-6px);
+            background: rgba(23, 15, 41, 0.6);
+            box-shadow: 0 20px 40px rgba(126, 34, 206, 0.2), inset 0 1px 2px rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-mixed:nth-child(1) { animation-delay: 0.1s; }
+        .card-mixed:nth-child(2) { animation-delay: 0.2s; }
+        .card-mixed:nth-child(3) { animation-delay: 0.3s; }
+        .card-mixed:nth-child(4) { animation-delay: 0.4s; }
+        .card-mixed:nth-child(5) { animation-delay: 0.5s; }
+        .card-mixed:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .floating { animation: floating 3s ease-in-out infinite; }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .pulse { animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+        
+        .glow-bg {
+            position: fixed;
+            width: 300px; height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(126, 34, 206, 0.15) 0%, rgba(0,0,0,0) 70%);
+            filter: blur(50px);
+            z-index: -2;
+            pointer-events: none;
+        }
+        
+        .particles {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; pointer-events: none; overflow: hidden;
+        }
+        .particle {
+            position: absolute; border-radius: 50%;
+            animation: floatUp infinite linear; opacity: 0;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            15%, 85% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
+            border: none;
+            border-radius: 60px;
+            padding: 16px 32px;
+            font-weight: 800;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .download-btn:hover {
+            transform: scale(1.03) translateY(-3px);
+            box-shadow: 0 15px 35px rgba(126, 34, 206, 0.6);
+        }
+        
+        .feature-icon {
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 1.5rem;
+            color: #a855f7;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+        .card-mixed:hover .feature-icon {
+            background: rgba(168, 85, 247, 0.15);
+            border-color: rgba(168, 85, 247, 0.3);
+            transform: scale(1.1);
+        }
+        
+        .telegram-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1.5px solid rgba(168, 85, 247, 0.2);
+            border-radius: 16px;
+            padding: 12px 20px;
+            color: #d1d5db;
+            transition: 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .telegram-btn:hover {
+            background: rgba(168, 85, 247, 0.1);
+            border-color: #a855f7;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 40px;
+            padding: 4px 16px;
+            font-size: 0.8rem;
+            color: #c4b5fd;
+        }
+
+        @media (max-width: 640px) {
+            .card-mixed { padding: 1.25rem 0.75rem; }
+            .feature-icon { width: 42px; height: 42px; font-size: 1.2rem; }
+            .download-btn { padding: 14px 24px; font-size: 1rem; width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- خلفيات توهج -->
+    <div class="glow-bg" style="top: 5%; left: -100px;"></div>
+    <div class="glow-bg" style="bottom: 5%; right: -100px; background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, rgba(0,0,0,0) 70%);"></div>
+
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-30 header-normal text-white">
+        <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm border border-white/10">
+                <i class="fas fa-bars"></i>
+            </div>
+            <h1 class="text-xl font-bold header-title text-purple-100">جمعتهالك</h1>
+            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/10">
+                <i class="fas fa-download text-purple-200"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 mt-6 pb-12">
+        <!-- Hero / تحميل -->
+        <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-purple-900/60 to-purple-800/30 border border-purple-500/20 text-white p-6 md:p-8 mb-8 shadow-2xl backdrop-blur-md text-center">
+            <div class="absolute inset-0 bg-black/10"></div>
+            <div class="relative z-10">
+                <div class="flex justify-center mb-4">
+                    <div class="w-20 h-20 rounded-full bg-purple-500/20 flex items-center justify-center floating border border-purple-400/30">
+                        <i class="fas fa-graduation-cap text-3xl text-purple-300"></i>
+                    </div>
+                </div>
+                <span class="hero-badge mb-3 inline-block">📚 الصف الثالث الإعدادي</span>
+                <h2 class="text-3xl md:text-4xl font-bold header-title text-purple-100 mb-2">جمعتهالك</h2>
+                <p class="text-lg text-purple-200/90 mb-1">مش بالجهد... بالذكاء</p>
+                <p class="text-sm text-purple-300/70 mb-5">تطبيق تعليمي شامل للأزهر والعام – شرح، اختبارات، مذكرات، مجتمع، وذكاء اصطناعي</p>
+                
+                <!-- رابط التحميل المباشر -->
+                <a href="https://apk.e-droid.net/apk/app3550824-ugi165.apk?v=4" class="download-btn" target="_blank">
+                    <i class="fas fa-cloud-download-alt"></i> تحميل التطبيق الآن
+                </a>
+                <p class="text-xs text-purple-300/50 mt-3">إصدار Android • حجم صغير • تحديثات مستمرة</p>
+            </div>
+        </div>
+
+        <!-- مميزات التطبيق -->
+        <h3 class="text-right text-2xl font-bold header-title text-white mb-5 flex items-center gap-3">
+            <i class="fas fa-sparkles text-purple-400"></i> مميزات جمعتهالك
+        </h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="card-mixed flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-book-open"></i></div>
+                <div>
+                    <h4 class="font-bold text-white text-lg">شامل جميع المواد</h4>
+                    <p class="text-gray-400 text-sm">لكل مواد الأزهر والعام، شرح ومراجعات وتدريبات شاملة.</p>
+                </div>
+            </div>
+            <div class="card-mixed flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                <div>
+                    <h4 class="font-bold text-white text-lg">اختبارات ومذكرات</h4>
+                    <p class="text-gray-400 text-sm">بنك ضخم من الاختبارات والمذكرات والكتب التفاعلية.</p>
+                </div>
+            </div>
+            <div class="card-mixed flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <div>
+                    <h4 class="font-bold text-white text-lg">مجتمع الطلاب</h4>
+                    <p class="text-gray-400 text-sm">تواصل مع زملائك، شارك الأفكار وحلول المسائل.</p>
+                </div>
+            </div>
+            <div class="card-mixed flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                <div>
+                    <h4 class="font-bold text-white text-lg">ذكاء اصطناعي متخصص</h4>
+                    <p class="text-gray-400 text-sm">مساعد ذكي متكامل مع المنهج الدراسي يجيب على أسئلتك.</p>
+                </div>
+            </div>
+            <div class="card-mixed flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-tools"></i></div>
+                <div>
+                    <h4 class="font-bold text-white text-lg">أدوات مساعدة ذكية</h4>
+                    <p class="text-gray-400 text-sm">مخططات، ملخصات، وأدوات تنظيم الدراسة بلمسة واحدة.</p>
+                </div>
+            </div>
+            <div class="card-mixed flex items-start gap-4">
+                <div class="feature-icon"><i class="fas fa-star"></i></div>
+                <div>
+                    <h4 class="font-bold text-white text-lg">ليالي الامتحانات</h4>
+                    <p class="text-gray-400 text-sm">مراجعات مكثفة وتوقعات الأسئلة لمختلف المحافظات.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- قسم التليجرام - التواصل مع المطور -->
+        <div class="mt-10 flex flex-col md:flex-row items-center justify-between gap-5 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+            <div class="flex items-center gap-3">
+                <i class="fab fa-telegram-plane text-2xl text-purple-400"></i>
+                <span class="text-gray-300">تواصل مع المطور:</span>
+            </div>
+            <div>
+                <a href="https://t.me/karem0101" target="_blank" class="telegram-btn">
+                    <i class="fab fa-telegram-plane"></i> Karem ALabadly
+                </a>
+            </div>
+        </div>
+
+        <!-- فوتر صغير -->
+        <div class="mt-8 text-center text-gray-500 text-xs border-t border-white/5 pt-6">
+            <p>جمعتهالك 2026 – تطبيق تعليمي للصف الثالث الإعدادي (أزهر وعام). جميع الحقوق محفوظة.</p>
+        </div>
+    </main>
+
+    <script>
+        // جسيمات الخلفية
+        const particlesContainer = document.getElementById('particles');
+        const colors = ['rgba(168, 85, 247, 0.2)', 'rgba(126, 34, 206, 0.15)', 'rgba(236, 72, 153, 0.1)', 'rgba(255, 255, 255, 0.08)'];
+        for (let i = 0; i < 40; i++) {
+            let p = document.createElement('div');
+            p.className = 'particle';
+            p.style.width = p.style.height = (Math.random() * 8 + 3) + 'px';
+            p.style.background = colors[Math.floor(Math.random() * colors.length)];
+            p.style.left = Math.random() * 100 + '%';
+            p.style.animationDuration = (Math.random() * 14 + 6) + 's';
+            p.style.animationDelay = (Math.random() * 10) + 's';
+            particlesContainer.appendChild(p);
+        }
+    </script>
+</body>
+</html>
